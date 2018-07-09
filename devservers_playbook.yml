@@ -1,0 +1,13 @@
+---
+ - name: Update user password
+   hosts: devservers
+   remote_user: testuser
+
+   vars:
+    user_name: testuser
+
+   tasks:
+   - name: updating password
+     user: name={{user_name}} update_password=always password={{ 'Ay0mide$001'|password_hash('sha512') }}
+
+...
